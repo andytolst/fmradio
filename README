@@ -1,0 +1,10 @@
+FM Radio receiver for Nokia N9.
+
+Copyright (C) 2012 Andrey Kozhanov <andy.tolst@gmail.com>
+
+Application backend is based on fmrxd - a daemon to enable and multiplex access to the N950/N9 radio tuner
+Copyright (C) 2011 Javier S. Pedro <maemo@javispedro.com>
+
+This application is open source, source code can be obtained on GitHub:
+https://github.com/andytolst/fmradio
+
