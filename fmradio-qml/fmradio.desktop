@@ -1,0 +1,9 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Name=FM Radio
+Exec=/usr/bin/single-instance /opt/fmradio/fmradio
+Icon=/usr/share/icons/hicolor/80x80/apps/fmradio80.png

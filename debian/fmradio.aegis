@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aegis>
+	<request>
+		<!-- Required for raw ALSA access -->
+		<credential name="UID::root" />
+		<!-- Required to be able to turn BT on/off -->
+		<credential name="CAP::net_admin" />
+		<!-- Required to be able to send HCI commands -->
+		<credential name="CAP::net_raw" />
+                <for path="/opt/fmradio/fmradio-backend" />
+	</request>
+</aegis>

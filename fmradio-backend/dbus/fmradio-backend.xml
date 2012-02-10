@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<node name="/fmradio">
+    <interface name="com.akozhan.fmradio">
+        <method name="tuneToFreq" >
+            <arg direction="in" name="freq" type="d"/>
+        </method>
+
+        <method name="scan" >
+            <arg direction="in" name="forward" type="b"/>
+        </method>
+
+        <method name="start"/>
+
+        <method name="stop"/>
+        
+        <method name="exit"/>
+
+        <signal name="tuned" >
+             <arg name="freq" type="d"/>
+             <arg name="signal" type="u"/>
+        </signal>
+
+        <signal name="signalChanged" >
+             <arg name="signal" type="u"/>
+             <arg name="stereo" type="b"/>
+        </signal>
+
+    </interface>
+</node>

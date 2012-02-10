@@ -1,0 +1,11 @@
+*.o
+Makefile
+*.moc
+debian/tmp
+debian/files
+debian/fmradio
+moc_*
+*.user
+*.pro.user*
+fmradio-qml/fmradio-qml
+fmradio-backend/fmradio-backend

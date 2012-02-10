@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+  
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/makefile.mk
+include /usr/share/cdbs/1/class/qmake.mk
+
+CXXFLAGS += -Werror
+CFLAGS += -Werror
+
+DEB_QMAKE_ARGS := -recursive APP_INSTALL_ROOT=/usr fmradio.pro
+DEB_QMAKE_CONFIG_VAL := release
+DEB_DH_INSTALL_SOURCEDIR := debian/tmp
+#DEB_DH_INSTALL_ARGS := --list-missing
+
+PACKAGE_TARGETS :=  $(foreach pkg,$(DEB_ALL_PACKAGES),binary/$(pkg))
+$(PACKAGE_TARGETS)::
+	[ ! -f debian/$(notdir $@).aegis ] || aegis-deb-add -control debian/$(notdir $@)/DEBIAN/control .. debian/$(notdir $@).aegis=_aegis
+
