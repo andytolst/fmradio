@@ -24,9 +24,9 @@ Item {
     width: 466
     height: 184
 
-    property real value: 88
-    property real tuningValue: 88
-    property real minValue: 88
+    property real value: 87.5
+    property real tuningValue: 87.5
+    property real minValue: 87.5
     property real maxValue: 108
     property bool moving: tuner.moving
     property bool powered: false

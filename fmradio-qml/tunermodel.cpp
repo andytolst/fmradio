@@ -34,8 +34,7 @@ TunerModel::TunerModel(QObject *parent) :
     connect(&m_engine, SIGNAL(tuned(double,uint)), this, SLOT(slotOnTuned(double,uint)));
     connect(&m_engine, SIGNAL(signalChanged(uint,bool)), this, SLOT(slotOnSignalChanged(uint,bool)));
 
-    double fr = m_settings.value("lastFreq").toDouble();
-    m_currentFreq = (fr == 0) ? 88 : fr;
+    m_currentFreq = m_settings.value("lastFreq", 87.5).toDouble();
 }
 
 TunerModel::~TunerModel()
