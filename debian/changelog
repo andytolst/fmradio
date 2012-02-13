@@ -1,3 +1,9 @@
+fmradio (0.0.3) unstable; urgency=low
+
+  * Add 6 more favorite buttons
+
+ -- Andrey Kozhanov <andy.tolst@gmail.com>  Mon, 13 Feb 2012 15:55:03 +0400
+
 fmradio (0.0.2) unstable; urgency=low
 
   * Set minimal freq to 87.5
