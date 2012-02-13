@@ -1,3 +1,9 @@
+fmradio (0.0.2) unstable; urgency=low
+
+  * Set minimal freq to 87.5
+
+ -- Andrey Kozhanov <andy.tolst@gmail.com>  Mon, 13 Feb 2012 12:25:40 +0400
+
 fmradio (0.0.1) unstable; urgency=low
 
   * Initial Release.
