@@ -1,3 +1,9 @@
+fmradio (0.0.4) unstable; urgency=low
+
+  * Add loudspeaker support
+
+ -- Andrey Kozhanov <andy.tolst@gmail.com>  Mon, 13 Feb 2012 18:45:15 +0400
+
 fmradio (0.0.3) unstable; urgency=low
 
   * Add 6 more favorite buttons
