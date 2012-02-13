@@ -40,6 +40,7 @@ Rectangle {
        onSignalChanged: signalMeter.value = tunerModel.signalLevel()
 
        onTurnedOff: powerSwitch.isEnabled = false
+       onSpeakerStateChanged: speakerButton.highlited = tunerModel.isLoudSpeaker();
     }
 
     Component.onCompleted:
@@ -59,6 +60,8 @@ Rectangle {
         button12.text = tunerModel.getStation(12) === 0 ? "---" : tunerModel.getStation(12).toFixed(1);
 
         tunerScale.tuneToFreq(tunerModel.currentFreq());
+
+        speakerButton.highlited = tunerModel.isLoudSpeaker();
     }
 
     onIsInPortraitChanged: console.log("Orientation portrait " + isInPortrait);
@@ -517,7 +520,7 @@ Rectangle {
                 anchors.top: parent.top
                 anchors.topMargin: 8
                 anchors.left: parent.left
-                anchors.leftMargin: 10
+                anchors.leftMargin: 0
 
                 onClicked: {
                     helpScreen.opacity = 1;
@@ -525,20 +528,39 @@ Rectangle {
                 }
             }
 
+            SpeakerButton {
+                id: speakerButton
+                x: 106
+                y: 8
+                width: 90
+                height: 90
+                smooth: true
+
+                anchors.top: parent.top
+                anchors.topMargin: 8
+                anchors.left: parent.left
+                anchors.leftMargin: 85
+
+                onClicked: {
+                    tunerModel.setLoudSpeaker(!tunerModel.isLoudSpeaker());
+                    highlited = tunerModel.isLoudSpeaker();
+                }
+            }
+
             Image {
                 id: image2
-                x: 155
-                y: 31
-                width: 170
-                height: 44
+                x: 202
+                y: 33
+                width: 152
+                height: 41
                 sourceSize.height: 44
                 sourceSize.width: 170
                 smooth: true
                 anchors.top: parent.top
-                anchors.topMargin: 31
+                anchors.topMargin: 33
                 source: "components/title.png"
                 fillMode: Image.PreserveAspectFit
-                anchors.leftMargin: 155
+                anchors.leftMargin: 202
                 anchors.left: parent.left
             }
 

@@ -21,7 +21,10 @@
 #define TUNERMODEL_H
 
 #include <QObject>
+#include <QDBusInterface>
 #include "dbus/fmradiointerface.h"
+
+class ContextProperty;
 
 class TunerModel : public QObject
 {
@@ -35,6 +38,7 @@ signals:
     void ready();
     void signalChanged();
     void turnedOff();
+    void speakerStateChanged();
 
 public slots:
     void powerOn(bool on);
@@ -46,10 +50,15 @@ public slots:
     uint signalLevel();
     bool isStereo();
     double currentFreq();
+
+    void setLoudSpeaker(bool loud);
+    bool isLoudSpeaker();
+
 private slots:
     void slotOnTuned(double freq, uint signal);
     void slotOnSignalChanged(uint signal, bool stereo);
     void slotOnBackendClosed(int code, QProcess::ExitStatus status);
+    void onSpeakerChanged();
 private:
     enum TunerState {
         StateIdle,
@@ -70,6 +79,9 @@ private:
 
     QProcess m_backend;
     QSettings m_settings;
+    QDBusInterface m_loudSpeakerIface;
+    ContextProperty* m_loudSpeakerProperty;
+    bool m_speakerEnabled;
 };
 
 #endif // TUNERMODEL_H

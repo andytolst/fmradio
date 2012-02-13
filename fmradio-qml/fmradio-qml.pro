@@ -21,7 +21,8 @@ TARGET = fmradio
 QT += declarative dbus
 
 # Speed up launching on MeeGo/Harmattan when using applauncherd daemon
-CONFIG += qdeclarative-boostable
+CONFIG += qdeclarative-boostable link_pkgconfig
+PKGCONFIG += contextsubscriber-1.0
 
 HEADERS += \
     tunermodel.h \
@@ -50,7 +51,8 @@ OTHER_FILES += \
     qml/components/SeekButton.qml \
     fmradio.conf \
     qml/components/HelpButton.qml \
-    qml/components/HelpScreen.qml
+    qml/components/HelpScreen.qml \
+    qml/components/SpeakerButton.qml
 
 target.path += /opt/fmradio/
 INSTALLS += target
@@ -67,5 +69,6 @@ INSTALLS += desktop_icon
 resource_conf.files   = fmradio.conf
 resource_conf.path    = $$APP_INSTALL_ROOT/share/policy/etc/syspart.conf.d
 INSTALLS += resource_conf
+
 
 

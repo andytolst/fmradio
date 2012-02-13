@@ -19,7 +19,8 @@
 
 #include "tunermodel.h"
 #include <QDebug>
-#include <QProcess>
+
+#include <contextproperty.h>
 
 TunerModel::TunerModel(QObject *parent) :
     QObject(parent)
@@ -30,16 +31,25 @@ TunerModel::TunerModel(QObject *parent) :
   , m_stereo(false)
   , m_engine("com.akozhan.fmradio", "/com/akozhan/fmradio", QDBusConnection::sessionBus())
   , m_settings(QDir::homePath() + "/.config/fmradio/fmradio.conf", QSettings::IniFormat)
+  , m_loudSpeakerIface("org.maemo.Playback.Manager", "/org/maemo/Playback/Manager", "org.maemo.Playback.Manager")
+  , m_speakerEnabled(false)
 {
     connect(&m_engine, SIGNAL(tuned(double,uint)), this, SLOT(slotOnTuned(double,uint)));
     connect(&m_engine, SIGNAL(signalChanged(uint,bool)), this, SLOT(slotOnSignalChanged(uint,bool)));
 
     m_currentFreq = m_settings.value("lastFreq", 87.5).toDouble();
+
+    m_loudSpeakerProperty = new ContextProperty("/com/nokia/policy/privacy_override", this);
+    connect( m_loudSpeakerProperty,
+             SIGNAL(valueChanged()),
+             SLOT(onSpeakerChanged()) );
+    m_speakerEnabled = (m_loudSpeakerProperty->value().toString()=="public");
 }
 
 TunerModel::~TunerModel()
 {
     qDebug() << "Terminating backend";
+    m_loudSpeakerIface.call("RequestPrivacyOverride", false);
 
     m_settings.setValue("lastFreq", m_currentFreq);
     m_engine.exit().waitForFinished();
@@ -152,4 +162,22 @@ void TunerModel::slotOnSignalChanged(uint signal, bool stereo)
     m_signal = signal;
     m_stereo = stereo;
     emit signalChanged();
+}
+
+void TunerModel::setLoudSpeaker(bool loud)
+{
+    m_loudSpeakerIface.call("RequestPrivacyOverride", loud);
+}
+
+bool TunerModel::isLoudSpeaker()
+{
+    return m_speakerEnabled;
+}
+
+void TunerModel::onSpeakerChanged()
+{
+    qDebug() << "onSpeakerChanged " << m_loudSpeakerProperty->value().toString();
+    m_speakerEnabled = (m_loudSpeakerProperty->value().toString()=="public");
+
+    emit speakerStateChanged();
 }

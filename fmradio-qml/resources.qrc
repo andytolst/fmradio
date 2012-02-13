@@ -44,5 +44,8 @@
         <file>qml/components/meter_background.png</file>
         <file>qml/components/meter_foreground.png</file>
         <file>qml/components/meter_light.png</file>
+        <file>qml/components/speaker_button.png</file>
+        <file>qml/components/SpeakerButton.qml</file>
+        <file>qml/components/speaker_button_highlited.png</file>
     </qresource>
 </RCC>
