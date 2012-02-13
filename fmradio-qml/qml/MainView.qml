@@ -51,6 +51,13 @@ Rectangle {
         button5.text = tunerModel.getStation(5) === 0 ? "---" : tunerModel.getStation(5).toFixed(1);
         button6.text = tunerModel.getStation(6) === 0 ? "---" : tunerModel.getStation(6).toFixed(1);
 
+        button7.text = tunerModel.getStation(7) === 0 ? "---" : tunerModel.getStation(7).toFixed(1);
+        button8.text = tunerModel.getStation(8) === 0 ? "---" : tunerModel.getStation(8).toFixed(1);
+        button9.text = tunerModel.getStation(9) === 0 ? "---" : tunerModel.getStation(9).toFixed(1);
+        button10.text = tunerModel.getStation(10) === 0 ? "---" : tunerModel.getStation(10).toFixed(1);
+        button11.text = tunerModel.getStation(11) === 0 ? "---" : tunerModel.getStation(11).toFixed(1);
+        button12.text = tunerModel.getStation(12) === 0 ? "---" : tunerModel.getStation(12).toFixed(1);
+
         tunerScale.tuneToFreq(tunerModel.currentFreq());
     }
 
@@ -210,124 +217,267 @@ Rectangle {
                 border.left: 10
                 source: "components/border.png"
 
-                Item {
-                    id: buttonsRowRight
-                    y: 118
-                    //            width: isInPortrait ? 480 : 150
-                    //            height: isInPortrait ? 110 : 480
-                    //            anchors.right: parent.right
-                    //            anchors.bottom: parent.bottom
-                    height: 110
-                    anchors.left: parent.left
-                    anchors.leftMargin: 10
-                    anchors.bottomMargin: 10
+                PathView {
+                    id: favButtonsList
+                    smooth: true
                     anchors.rightMargin: 10
-                    anchors.right: parent.right
-                    anchors.bottom: parent.bottom
+                    anchors.leftMargin: 10
+                    anchors.bottomMargin: 0
+                    anchors.topMargin: 0
 
-                    Button {
-                        id: button4
-                        x: 21
-                        y: 743
-                        width: 140
-                        height: 100
-                        text: "---"
-                        anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 0
-                        anchors.left: parent.left
-                        anchors.leftMargin: 0
-                        onClicked: tunerScale.tuneToFreq(text)
-                        onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(4, text);}
-                        highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                    anchors.fill: parent
+                    clip: true
+
+                    model: itemModel
+                    preferredHighlightBegin: 0;
+                    preferredHighlightEnd: 0
+                    highlightRangeMode: PathView.StrictlyEnforceRange
+
+                    path: Path {
+                        startX: -230; startY: 113
+                        PathLine { x: 670; y: 113;}
                     }
 
-                    Button {
-                        id: button5
-                        x: 175
-                        y: 743
-                        width: 140
-                        height: 100
-                        text: "---"
-                        anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 0
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        onClicked: tunerScale.tuneToFreq(text)
-                        onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(5, text);}
-                        highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
-                    }
-
-                    Button {
-                        id: button6
-                        x: 323
-                        y: 743
-                        width: 140
-                        height: 100
-                        text: "---"
-                        anchors.right: parent.right
-                        anchors.rightMargin: 0
-                        anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 0
-                        onClicked: tunerScale.tuneToFreq(text)
-                        onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(6, text);}
-                        highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
-                    }
                 }
 
-                Item {
-                    id: buttonsRowLeft
-                    //            width: isInPortrait ? 480 : 150
-                    //            height: isInPortrait ? 110 : 480
-                    //            anchors.left: parent.left
-                    //            anchors.bottom: parent.bottom
-                    //            anchors.bottomMargin: isInPortrait ? buttonsRowRight.height : 0
-                    height: 110
-                    anchors.right: parent.right
-                    anchors.rightMargin: 10
-                    anchors.left: parent.left
-                    anchors.leftMargin: 10
-                    anchors.top: parent.top
-                    anchors.topMargin: 10
 
-                    Button {
-                        id: button1
-                        width: 140
-                        height: 100
-                        text: "---"
-                        anchors.top: parent.top
-                        anchors.topMargin: 0
-                        anchors.left: parent.left
-                        anchors.leftMargin: 0
-                        onClicked: tunerScale.tuneToFreq(text)
-                        onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(1, text);}
-                        highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                VisualItemModel {
+                    id: itemModel
+                    Item
+                    {
+                        id: buttonsSet2
+                        width: 440
+                        height: 206
+                        smooth: true
+
+                        Item {
+                            id: buttonsRowRight2
+                            y: 118
+                            height: 100
+                            anchors.left: parent.left
+                            anchors.leftMargin: 0
+                            anchors.bottomMargin: 0
+                            anchors.rightMargin: 0
+                            anchors.right: parent.right
+                            anchors.bottom: parent.bottom
+
+                            Button {
+                                id: button10
+                                x: 21
+                                y: 743
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: 0
+                                anchors.left: parent.left
+                                anchors.leftMargin: 0
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(10, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+
+                            Button {
+                                id: button11
+                                x: 175
+                                y: 743
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: 0
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(11, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+
+                            Button {
+                                id: button12
+                                x: 323
+                                y: 743
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.right: parent.right
+                                anchors.rightMargin: 0
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: 0
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(12, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+                        }
+
+                        Item {
+                            id: buttonsRowLeft2
+                            height: 100
+                            anchors.right: parent.right
+                            anchors.rightMargin: 0
+                            anchors.left: parent.left
+                            anchors.leftMargin: 0
+                            anchors.top: parent.top
+                            anchors.topMargin: 0
+
+                            Button {
+                                id: button7
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.top: parent.top
+                                anchors.topMargin: 0
+                                anchors.left: parent.left
+                                anchors.leftMargin: 0
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(7, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+
+                            Button {
+                                id: button8
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.top: parent.top
+                                anchors.topMargin: 0
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(8, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+
+                            Button {
+                                id: button9
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.top: parent.top
+                                anchors.topMargin: 0
+                                anchors.right: parent.right
+                                anchors.rightMargin: 0
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(9, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+                        }
+
+                    }
+                    Item
+                    {
+                        id: buttonsSet1
+                        height: 206
+                        smooth: true
+                        width: 440
+
+                        Item {
+                            id: buttonsRowRight
+                            y: 0
+                            width: 440
+
+                            height: 100
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.bottom: parent.bottom
+
+                            Button {
+                                id: button4
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: 0
+                                anchors.left: parent.left
+                                anchors.leftMargin: 0
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(4, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+
+                            Button {
+                                id: button5
+                                x: 175
+                                y: 743
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: 0
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(5, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+
+                            Button {
+                                id: button6
+                                x: 323
+                                y: 743
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.right: parent.right
+                                anchors.rightMargin: 0
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: 0
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(6, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+                        }
+
+                        Item {
+                            id: buttonsRowLeft
+
+                            height: 100
+                            width: 440
+                            anchors.right: parent.right
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+
+                            Button {
+                                id: button1
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.top: parent.top
+                                anchors.topMargin: 0
+                                anchors.left: parent.left
+                                anchors.leftMargin: 0
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(1, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+
+                            Button {
+                                id: button2
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.top: parent.top
+                                anchors.topMargin: 0
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(2, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+
+                            Button {
+                                id: button3
+                                width: 140
+                                height: 100
+                                text: "---"
+                                anchors.top: parent.top
+                                anchors.topMargin: 0
+                                anchors.right: parent.right
+                                anchors.rightMargin: 0
+                                onClicked: tunerScale.tuneToFreq(text)
+                                onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(3, text);}
+                                highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
+                            }
+                        }
+
                     }
 
-                    Button {
-                        id: button2
-                        width: 140
-                        height: 100
-                        text: "---"
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.top: parent.top
-                        anchors.topMargin: 0
-                        onClicked: tunerScale.tuneToFreq(text)
-                        onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(2, text);}
-                        highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
-                    }
-
-                    Button {
-                        id: button3
-                        width: 140
-                        height: 100
-                        text: "---"
-                        anchors.top: parent.top
-                        anchors.topMargin: 0
-                        anchors.right: parent.right
-                        anchors.rightMargin: 0
-                        onClicked: tunerScale.tuneToFreq(text)
-                        onLongTap: {text = tunerScale.value.toFixed(1); tunerModel.storeStation(3, text);}
-                        highlited: powerSwitch.isEnabled && tunerScale.value.toFixed(1) === text
-                    }
                 }
             }
 
