@@ -1,3 +1,9 @@
+fmradio (0.0.5) unstable; urgency=low
+
+  * Remember powered state + update headset button
+
+ -- Andrey Kozhanov <andy.tolst@gmail.com>  Tue, 14 Feb 2012 12:44:58 +0400
+
 fmradio (0.0.4) unstable; urgency=low
 
   * Add loudspeaker support
