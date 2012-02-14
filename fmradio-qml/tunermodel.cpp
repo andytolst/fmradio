@@ -21,6 +21,7 @@
 #include <QDebug>
 
 #include <contextproperty.h>
+#include <contextpropertyinfo.h>
 
 TunerModel::TunerModel(QObject *parent) :
     QObject(parent)
@@ -41,11 +42,11 @@ TunerModel::TunerModel(QObject *parent) :
     m_currentFreq = m_settings.value("lastFreq", 87.5).toDouble();
     m_powered = m_settings.value("powered", false).toBool();
 
-    m_loudSpeakerProperty = new ContextProperty("/com/nokia/policy/privacy_override", this);
+    m_loudSpeakerProperty = new ContextProperty("/com/nokia/policy/audio_route", this);
     connect( m_loudSpeakerProperty,
              SIGNAL(valueChanged()),
              SLOT(onSpeakerChanged()) );
-    m_speakerEnabled = (m_loudSpeakerProperty->value().toString()=="public");
+    m_speakerEnabled = (m_loudSpeakerProperty->value().toString()!="headset");
 }
 
 TunerModel::~TunerModel()
@@ -182,7 +183,7 @@ bool TunerModel::isLoudSpeaker()
 void TunerModel::onSpeakerChanged()
 {
     qDebug() << "onSpeakerChanged " << m_loudSpeakerProperty->value().toString();
-    m_speakerEnabled = (m_loudSpeakerProperty->value().toString()=="public");
+    m_speakerEnabled = (m_loudSpeakerProperty->value().toString()!="headset");
 
     emit speakerStateChanged();
 }
