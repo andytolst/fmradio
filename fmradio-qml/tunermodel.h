@@ -54,6 +54,8 @@ public slots:
     void setLoudSpeaker(bool loud);
     bool isLoudSpeaker();
 
+    bool isPowered();
+
 private slots:
     void slotOnTuned(double freq, uint signal);
     void slotOnSignalChanged(uint signal, bool stereo);
@@ -82,6 +84,7 @@ private:
     QDBusInterface m_loudSpeakerIface;
     ContextProperty* m_loudSpeakerProperty;
     bool m_speakerEnabled;
+    bool m_powered;
 };
 
 #endif // TUNERMODEL_H

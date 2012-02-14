@@ -40,7 +40,7 @@ Rectangle {
        onSignalChanged: signalMeter.value = tunerModel.signalLevel()
 
        onTurnedOff: powerSwitch.isEnabled = false
-       onSpeakerStateChanged: speakerButton.highlited = tunerModel.isLoudSpeaker();
+       onSpeakerStateChanged: speakerButton.isSpeaker = tunerModel.isLoudSpeaker();
     }
 
     Component.onCompleted:
@@ -61,7 +61,9 @@ Rectangle {
 
         tunerScale.tuneToFreq(tunerModel.currentFreq());
 
-        speakerButton.highlited = tunerModel.isLoudSpeaker();
+        speakerButton.isSpeaker = tunerModel.isLoudSpeaker();
+
+        powerSwitch.isEnabled = tunerModel.isPowered();
     }
 
     onIsInPortraitChanged: console.log("Orientation portrait " + isInPortrait);
@@ -543,7 +545,6 @@ Rectangle {
 
                 onClicked: {
                     tunerModel.setLoudSpeaker(!tunerModel.isLoudSpeaker());
-                    highlited = tunerModel.isLoudSpeaker();
                 }
             }
 

@@ -33,11 +33,13 @@ TunerModel::TunerModel(QObject *parent) :
   , m_settings(QDir::homePath() + "/.config/fmradio/fmradio.conf", QSettings::IniFormat)
   , m_loudSpeakerIface("org.maemo.Playback.Manager", "/org/maemo/Playback/Manager", "org.maemo.Playback.Manager")
   , m_speakerEnabled(false)
+  , m_powered(false)
 {
     connect(&m_engine, SIGNAL(tuned(double,uint)), this, SLOT(slotOnTuned(double,uint)));
     connect(&m_engine, SIGNAL(signalChanged(uint,bool)), this, SLOT(slotOnSignalChanged(uint,bool)));
 
     m_currentFreq = m_settings.value("lastFreq", 87.5).toDouble();
+    m_powered = m_settings.value("powered", false).toBool();
 
     m_loudSpeakerProperty = new ContextProperty("/com/nokia/policy/privacy_override", this);
     connect( m_loudSpeakerProperty,
@@ -52,6 +54,7 @@ TunerModel::~TunerModel()
     m_loudSpeakerIface.call("RequestPrivacyOverride", false);
 
     m_settings.setValue("lastFreq", m_currentFreq);
+    m_settings.setValue("powered", m_powered);
     m_engine.exit().waitForFinished();
 }
 
@@ -79,10 +82,12 @@ void TunerModel::powerOn(bool on)
         m_state = StateScanning;
         m_nextState = StateIdle;
         m_engine.start();
+        m_powered = true;
     }
     else
     {
         m_engine.stop();
+        m_powered = false;
     }
 }
 
@@ -180,4 +185,9 @@ void TunerModel::onSpeakerChanged()
     m_speakerEnabled = (m_loudSpeakerProperty->value().toString()=="public");
 
     emit speakerStateChanged();
+}
+
+bool TunerModel::isPowered()
+{
+    return m_powered;
 }

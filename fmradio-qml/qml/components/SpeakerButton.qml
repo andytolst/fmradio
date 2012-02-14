@@ -21,7 +21,7 @@ import QtQuick 1.1
 
 Item {
     id: container
-    property bool highlited: false
+    property bool isSpeaker: false
 
     signal clicked
 
@@ -37,6 +37,6 @@ Item {
         id: image
         smooth: true
         anchors.fill:parent
-        source: highlited ? "speaker_button_highlited.png" : "speaker_button.png"
+        source: mouseArea.pressed ? isSpeaker ? "speaker_button_highlited.png" : "speaker_button_headset_highlited.png" : isSpeaker ? "speaker_button.png" : "speaker_button_headset.png"
     }
 }

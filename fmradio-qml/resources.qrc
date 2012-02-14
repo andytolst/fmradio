@@ -47,5 +47,7 @@
         <file>qml/components/speaker_button.png</file>
         <file>qml/components/SpeakerButton.qml</file>
         <file>qml/components/speaker_button_highlited.png</file>
+        <file>qml/components/speaker_button_headset.png</file>
+        <file>qml/components/speaker_button_headset_highlited.png</file>
     </qresource>
 </RCC>
