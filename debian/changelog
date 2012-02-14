@@ -1,3 +1,9 @@
+fmradio (0.0.6) unstable; urgency=low
+
+  * Fix audio routing
+
+ -- Andrey Kozhanov <andy.tolst@gmail.com>  Tue, 14 Feb 2012 15:45:09 +0400
+
 fmradio (0.0.5) unstable; urgency=low
 
   * Remember powered state + update headset button

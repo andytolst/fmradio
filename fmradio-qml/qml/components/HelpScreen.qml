@@ -55,7 +55,7 @@ Item {
         width: 374
         height: 30
         color: "#d1ce04"
-        text: " version 0.0.5"
+        text: " version 0.0.6"
         font.pixelSize: 27
     }
 
