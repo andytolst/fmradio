@@ -123,18 +123,32 @@ Item {
             text: "<html><style>a { color: green; } a:visited { color: red; } a:active {color: yellow;} </style><body>
                    <b><u>Usage guide: </u></b><br>
                    Please insert headset for better signal quality, it acts as FM antenna.<br>
+
+                   <img src=':speaker_button_headset_highlited.png' width=70 height=70 />
+                   <img src=':speaker_button_highlited.png' width=70 height=70 /> <br>
+                   \"headset\/speaker\" button allows to play radio on loudspeaker when headset is inserted.<br>
+
+                   <img src=':nixie_help.png' width=300 height=100 /> <br>
                    Nixie tube digits indicate current frequency<br>
+
+                   <img src=':scale_help.png' width=300 height=100 /> <br>
                    Scrolling tuner scale allows to set frequency manually<br>
+
+                   <img src=':seek_help.png' width=150 height=40 /> <br>
                    Single tap on (&lt;&lt;) and (&gt;&gt;) butons allows to adjust frequency. <br>
                    Long tap on (&lt;&lt;) and (&gt;&gt;) butons performs scan in corresponding direction.<br>
-                   Single tap on favorite station buton sets frequency. <br>
+
+                   <img src=':favorite_help.png' width=300 height=60 /> <br>
+                   Single tap on favorite station button sets frequency. <br>
                    Long tap on favorite station resets button's value to current frequency. <br>
                    <br>
-                   This software is open source <br>
+
+                   This software is open source. <br>
                    Source code and license details of this application is available on
-                   GitHub <a href=\"https:\/\/github.com\/andytolst\/fmradio\">https://github.com/andytolst/fmradio</a>
+                   GitHub <a href=\"https:\/\/github.com\/andytolst\/fmradio\">https://github.com/andytolst/fmradio</a> <br>
+                   FM tuner engine is based on fmrx tool &copy; Javier S. Pedro  <a href=\"http:\/\/gitorious.org\/n950-fmrx\">http://gitorious.org/n950-fmrx</a>
                    </body> </html> "
-            font.pointSize: 24
+            font.pointSize: 20
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             textFormat: Text.RichText
 
