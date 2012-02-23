@@ -46,7 +46,7 @@ TunerModel::TunerModel(QObject *parent) :
     connect( m_loudSpeakerProperty,
              SIGNAL(valueChanged()),
              SLOT(onSpeakerChanged()) );
-    m_speakerEnabled = (m_loudSpeakerProperty->value().toString()!="headset");
+    m_speakerEnabled = (m_loudSpeakerProperty->value().toString()!="headset" && m_loudSpeakerProperty->value().toString()!="headphone");
 }
 
 TunerModel::~TunerModel()
@@ -183,7 +183,7 @@ bool TunerModel::isLoudSpeaker()
 void TunerModel::onSpeakerChanged()
 {
     qDebug() << "onSpeakerChanged " << m_loudSpeakerProperty->value().toString();
-    m_speakerEnabled = (m_loudSpeakerProperty->value().toString()!="headset");
+    m_speakerEnabled = (m_loudSpeakerProperty->value().toString()!="headset" && m_loudSpeakerProperty->value().toString()!="headphone");
 
     emit speakerStateChanged();
 }
