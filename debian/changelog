@@ -1,3 +1,9 @@
+fmradio (0.0.7) unstable; urgency=low
+
+  * Fix usual headphones handling
+
+ -- Andrey Kozhanov <andy.tolst@gmail.com>  Thu, 23 Feb 2012 17:49:51 +0400
+
 fmradio (0.0.6) unstable; urgency=low
 
   * Fix audio routing
